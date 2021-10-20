@@ -4,15 +4,17 @@ import Deferred from './deferred';
 
 /**
  * 
- * @param {() => Promise} getData 
- * @param {{
+ * @param getData 
+ * @param options
+ */
+export function useAsyncDataEffect(
+  getData: () => Promise<any>,
+  options: {
     stateName: string;
     otherStatesToMonitor?: unknown[];
-    setter: (arg: x) => void;
-  }} options 
-  @return {void}
- */
-export function useAsyncDataEffect(getData, options) {
+    setter: (arg: any) => void;
+  },
+) {
   let cancelled = false;
   const { setter, stateName } = options;
   useEffect(() => {

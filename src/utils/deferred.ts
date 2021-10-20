@@ -1,7 +1,7 @@
 class Deferred {
   #_promise;
-  #_resolve;
-  #_reject;
+  #_resolve: (value: unknown) => void;
+  #_reject: (reason?: any) => void;
   constructor() {
     this.#_promise = new Promise((resolve, reject) => {
       this.#_resolve = resolve;
